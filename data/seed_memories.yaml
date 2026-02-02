@@ -1,0 +1,35 @@
+# Seed memories: example outcomes for more question types
+# Run: python scripts/seed_memory.py
+# These are embedded and stored in FAISS; retrieval will surface them for similar goals.
+
+memories:
+  - goal: "Calculate compound interest on $10,000 at 5% annual rate over 10 years, then write a brief report"
+    steps_summary: "1. Use calculator tool with expression 10000 * (1.05 ** 10). 2. Write result and explanation to a .md or .txt file."
+    outcome_summary: "Compound amount after 10 years; brief report saved to file."
+    category: math_report
+
+  - goal: "What is 15% of 240? Write the result to a file."
+    steps_summary: "1. Use calculator: 240 * 0.15. 2. Use file_io tool to write the result to a .txt file."
+    outcome_summary: "Result 36 written to file."
+    category: math
+
+  - goal: "Find the top 3 Python web frameworks by GitHub stars and compare them"
+    steps_summary: "1. Use web_search to find frameworks and GitHub stars. 2. Extract and compare. 3. Write comparison to a file."
+    outcome_summary: "List of top 3 frameworks with comparison written to file."
+    category: comparison
+
+  - goal: "Research recent advances in quantum computing and summarize in 500 words"
+    steps_summary: "1. Use web_search for quantum computing advances. 2. Synthesize and summarize. 3. Write summary to file (approx 500 words)."
+    outcome_summary: "Summary of quantum computing advances saved to file."
+    category: research
+
+  - goal: "Write a short Python script that prints the first 10 Fibonacci numbers"
+    steps_summary: "1. Use code_execute or write code to a file. 2. Code: loop or recursion for Fibonacci; print first 10."
+    outcome_summary: "Script prints 0,1,1,2,3,5,8,13,21,34 (or equivalent)."
+    category: code
+
+# Add your own question types (goal, steps_summary, outcome_summary required; category optional):
+#  - goal: "Your question type here"
+#    steps_summary: "Step 1. Step 2."
+#    outcome_summary: "What a good outcome looks like."
+#    category: my_category

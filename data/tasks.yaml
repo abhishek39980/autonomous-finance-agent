@@ -1,0 +1,62 @@
+# Task dataset for benchmarking and evaluation
+# Add more question types here; benchmark loads this file when present.
+# Optional: category, expected_tools (for metrics), tags
+
+tasks:
+  # --- Research & summarization ---
+  - goal: "Research recent advances in quantum computing and summarize in 500 words"
+    category: research
+    tags: [web_search, summarization, file_write]
+
+  - goal: "Summarize the key benefits of using version control in software development"
+    category: summarization
+    tags: [knowledge, file_write]
+
+  - goal: "Search for information about renewable energy and list three types"
+    category: research
+    tags: [web_search, list]
+
+  - goal: "Write a one-paragraph summary of what an API is"
+    category: summarization
+    tags: [knowledge, file_write]
+
+  # --- Math & calculator ---
+  - goal: "Calculate compound interest on $10,000 at 5% annual rate over 10 years, then write a brief report"
+    category: math_report
+    tags: [calculator, file_write]
+
+  - goal: "What is 15% of 240? Write the result to a file."
+    category: math
+    tags: [calculator, file_write]
+
+  - goal: "Calculate the area of a circle with radius 5 (use formula pi * r^2)"
+    category: math
+    tags: [calculator]
+
+  - goal: "What is (2 + 3) * 4? Use the calculator."
+    category: math
+    tags: [calculator]
+
+  # --- Comparison & lists ---
+  - goal: "Find the top 3 Python web frameworks by GitHub stars and compare them"
+    category: comparison
+    tags: [web_search, comparison, file_write]
+
+  - goal: "List three best practices for writing readable code"
+    category: list
+    tags: [knowledge, list]
+
+  # --- Code generation ---
+  - goal: "Write a short Python script that prints the first 10 Fibonacci numbers"
+    category: code
+    tags: [code_execute, file_write]
+
+  # --- Templates & structure ---
+  - goal: "Create a markdown file with a simple weekly schedule template"
+    category: template
+    tags: [file_write]
+
+# Add your own question types below (goal is required; category and tags optional):
+#  - goal: "Your question or task here"
+#    category: my_category
+#    tags: [tag1, tag2]
