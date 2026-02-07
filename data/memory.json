@@ -1,0 +1,231 @@
+{
+  "insights": [],
+  "spending_patterns": {
+    "Bills & Utilities": [
+      {
+        "amount": 85.5,
+        "period": "monthly",
+        "date": "2026-02-06T00:21:14.545637"
+      },
+      {
+        "amount": 85.5,
+        "period": "monthly",
+        "date": "2026-02-06T00:30:17.193695"
+      }
+    ],
+    "Food & Dining": [
+      {
+        "amount": 20.0,
+        "period": "monthly",
+        "date": "2026-02-06T00:21:14.547783"
+      },
+      {
+        "amount": 45.2,
+        "period": "monthly",
+        "date": "2026-02-06T00:30:17.195050"
+      }
+    ],
+    "Other": [
+      {
+        "amount": 1697.3,
+        "period": "monthly",
+        "date": "2026-02-06T00:21:14.549637"
+      },
+      {
+        "amount": 1697.3,
+        "period": "monthly",
+        "date": "2026-02-06T00:30:17.196441"
+      },
+      {
+        "amount": 16701.93,
+        "period": "monthly",
+        "date": "2026-02-06T01:07:20.704279"
+      },
+      {
+        "amount": 16701.93,
+        "period": "monthly",
+        "date": "2026-02-07T21:54:07.714480"
+      }
+    ],
+    "Shopping": [
+      {
+        "amount": 230.0,
+        "period": "monthly",
+        "date": "2026-02-06T00:21:14.551704"
+      },
+      {
+        "amount": 230.0,
+        "period": "monthly",
+        "date": "2026-02-06T00:30:17.198435"
+      },
+      {
+        "amount": 514.0,
+        "period": "monthly",
+        "date": "2026-02-07T22:03:19.440885"
+      }
+    ],
+    "Cash Withdrawal": [
+      {
+        "amount": 108152.68000000001,
+        "period": "monthly",
+        "date": "2026-02-06T01:07:20.702579"
+      },
+      {
+        "amount": 108152.68000000001,
+        "period": "monthly",
+        "date": "2026-02-07T21:54:07.712890"
+      },
+      {
+        "amount": 36694.17,
+        "period": "monthly",
+        "date": "2026-02-07T22:03:19.437585"
+      }
+    ],
+    "Paytm/Wallet": [
+      {
+        "amount": 4290.6,
+        "period": "monthly",
+        "date": "2026-02-06T01:07:20.705855"
+      },
+      {
+        "amount": 4290.6,
+        "period": "monthly",
+        "date": "2026-02-07T21:54:07.715999"
+      },
+      {
+        "amount": 2873.83,
+        "period": "monthly",
+        "date": "2026-02-07T22:03:19.439206"
+      }
+    ],
+    "UPI Payment": [
+      {
+        "amount": 5438.0,
+        "period": "monthly",
+        "date": "2026-02-06T01:07:20.707721"
+      },
+      {
+        "amount": 5438.0,
+        "period": "monthly",
+        "date": "2026-02-07T21:54:07.717737"
+      },
+      {
+        "amount": 30892.86,
+        "period": "monthly",
+        "date": "2026-02-07T22:03:19.442668"
+      }
+    ],
+    "Bank Charges": [
+      {
+        "amount": 22.5,
+        "period": "monthly",
+        "date": "2026-02-07T22:03:19.436275"
+      }
+    ]
+  },
+  "category_history": {},
+  "transaction_summaries": [
+    {
+      "total_transactions": 15,
+      "total_income": 5920.0,
+      "total_spending": 2058.0,
+      "net_balance": 3862.0,
+      "analyzed_at": "2026-02-06T00:21:14.523672",
+      "timestamp": "2026-02-06T00:21:14.533660"
+    },
+    {
+      "total_transactions": 15,
+      "total_income": 5920.0,
+      "total_spending": 2058.0,
+      "net_balance": 3862.0,
+      "analyzed_at": "2026-02-06T00:30:17.182810",
+      "timestamp": "2026-02-06T00:30:17.182999"
+    },
+    {
+      "total_transactions": 45,
+      "total_income": 137974.83000000002,
+      "total_spending": 134583.21000000002,
+      "net_balance": 3391.6199999999953,
+      "analyzed_at": "2026-02-06T01:07:20.698128",
+      "timestamp": "2026-02-06T01:07:20.698502"
+    },
+    {
+      "total_transactions": 45,
+      "total_income": 137974.83000000002,
+      "total_spending": 134583.21000000002,
+      "net_balance": 3391.6199999999953,
+      "analyzed_at": "2026-02-07T21:54:07.706972",
+      "timestamp": "2026-02-07T21:54:07.707623"
+    },
+    {
+      "total_transactions": 56,
+      "total_income": 630620.38,
+      "total_spending": 0.0,
+      "net_balance": 630620.38,
+      "analyzed_at": "2026-02-07T21:59:29.746394",
+      "timestamp": "2026-02-07T21:59:29.746469"
+    },
+    {
+      "total_transactions": 51,
+      "total_income": 69280.49,
+      "total_spending": 70997.35999999999,
+      "net_balance": -1716.8699999999808,
+      "analyzed_at": "2026-02-07T22:03:19.433326",
+      "timestamp": "2026-02-07T22:03:19.433388"
+    }
+  ],
+  "last_analysis": {
+    "total_transactions": 51,
+    "total_income": 69280.49,
+    "total_spending": 70997.35999999999,
+    "net_balance": -1716.8699999999808,
+    "analyzed_at": "2026-02-07T22:03:19.433326",
+    "timestamp": "2026-02-07T22:03:19.433388"
+  },
+  "recurring_transactions": [
+    {
+      "description": "00000000150000/INR",
+      "amount": 1350.0,
+      "frequency": "unknown",
+      "detected_at": "2026-02-06T01:07:20.713025"
+    },
+    {
+      "description": "ATM WITHDRAWAL SELF-SWITCH",
+      "amount": 5170.056666666666,
+      "frequency": "unknown",
+      "detected_at": "2026-02-06T01:07:20.715374"
+    },
+    {
+      "description": "BALANCE FORWARD",
+      "amount": 2018.0425,
+      "frequency": "unknown",
+      "detected_at": "2026-02-06T01:07:20.717949"
+    },
+    {
+      "description": "NICATIONSLI",
+      "amount": 156.66666666666666,
+      "frequency": "unknown",
+      "detected_at": "2026-02-06T01:07:20.720425"
+    },
+    {
+      "description": "PAYTM/ADD-MONEY@PAYTM/PYTM0123456/",
+      "amount": 1219.9333333333334,
+      "frequency": "unknown",
+      "detected_at": "2026-02-06T01:07:20.723496"
+    },
+    {
+      "description": "CGST @ 9.00%",
+      "amount": 5.625,
+      "frequency": "unknown",
+      "detected_at": "2026-02-07T21:59:29.753027"
+    },
+    {
+      "description": "SGST @ 9.00%",
+      "amount": 5.625,
+      "frequency": "unknown",
+      "detected_at": "2026-02-07T21:59:29.755728"
+    }
+  ],
+  "alerts": [],
+  "last_updated": "2026-02-07T22:03:19.442684"
+}

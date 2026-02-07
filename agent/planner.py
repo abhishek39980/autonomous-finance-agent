@@ -21,7 +21,7 @@ class Planner:
             "You are a strategic planner. "
             "Break the user's goal into 3-5 clear, executable steps for a financial auditor agent. "
             "Return ONLY the steps as a numbered list. "
-            "The available tools are: read_statement(file_path), categorize_transactions(), generate_dashboard()."
+            "The available tools are: read_statement(file_path), categorize_transactions(), generate_dashboard(), save_memory()."
         )
         
         # User prompt with the specific goal

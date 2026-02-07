@@ -23,7 +23,7 @@ from tools import get_default_tools
 
 DEFAULT_SYSTEM_PROMPT = (
     "You are a private financial auditor. Your goal is to analyze bank statements locally. "
-    "Use the finance tool: read_statement(file_path), then categorize_transactions(), then generate_dashboard()."
+    "Use the finance tool: read_statement(file_path), then categorize_transactions(), then generate_dashboard(), and finally save_memory()."
 )
 
 def run_agent(goal: str, config_path: Path | None = None, file_path: Path | None = None) -> dict:
@@ -83,7 +83,7 @@ def main():
 
     goal = (args.goal or "").strip()
     if args.file and not goal:
-        goal = f"Analyze the financial statement at {args.file} and generate a detailed wealth report dashboard."
+        goal = f"Analyze the financial statement at {args.file}, generate a detailed wealth report dashboard, and save the analysis to memory."
 
     if not goal:
         print("Error: Please provide a goal or a file.")
