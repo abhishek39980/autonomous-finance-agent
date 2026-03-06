@@ -3,15 +3,17 @@ requests>=2.31.0
 pyyaml>=6.0
 python-dateutil>=2.8.2
 
-# PDF Processing
+# PDF Processing & Data
+pandas>=2.0.0
 pdfplumber>=0.10.0
-camelot-py[cv]>=0.11.0
-opencv-python-headless>=4.8.0
 pymupdf>=1.23.0
 
-
-# Data Processing
-pandas>=2.0.0
-
-# Report Generation
-reportlab>=4.0.0
+# Framework & UI (RAG App)
+streamlit>=1.31.0
+llama-index>=0.10.0
+llama-index-llms-openai>=0.1.0
+llama-index-vector-stores-faiss>=0.1.0
+llama-index-embeddings-huggingface>=0.1.0
+langchain>=0.1.0
+faiss-cpu>=1.7.4
+sentence-transformers>=2.3.1
