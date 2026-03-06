@@ -1,4 +1,4 @@
-# 🗂️ Document Q&A System (Local RAG Application)
+# Autonomous Finance-agent (Local RAG Application)
 
 This is a **100% Local Document Q&A Knowledge Base** built using **LlamaIndex** and **Streamlit**. 
 
