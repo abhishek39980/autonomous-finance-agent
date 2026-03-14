@@ -1,19 +1,21 @@
-# Core Dependencies
+# Core
 requests>=2.31.0
 pyyaml>=6.0
 python-dateutil>=2.8.2
 
-# PDF Processing & Data
+# Data processing
 pandas>=2.0.0
+openpyxl>=3.1.0          # Excel (.xlsx) support
+xlrd>=2.0.1               # Legacy Excel (.xls) support
+
+# PDF processing
 pdfplumber>=0.10.0
 pymupdf>=1.23.0
 
-# Framework & UI (RAG App)
+# Streamlit UI
 streamlit>=1.31.0
+
+# LlamaIndex (RAG for app.py — optional, can skip if only using bank_app.py)
 llama-index>=0.10.0
-llama-index-llms-openai>=0.1.0
-llama-index-vector-stores-faiss>=0.1.0
 llama-index-embeddings-huggingface>=0.1.0
-langchain>=0.1.0
-faiss-cpu>=1.7.4
 sentence-transformers>=2.3.1

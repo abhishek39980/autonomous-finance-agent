@@ -41,7 +41,12 @@ def get_default_tools(config=None, llm=None):
     registry.register(CodeExecutionTool(config))
     registry.register(CalculatorTool(config))
     registry.register("read_statement", read_statement, "Read a bank statement file (CSV/XLSX/PDF).")
+    registry.register("read", read_statement, "Alias for read_statement.")
     registry.register("categorize_transactions", categorize_transactions, "Categorize transactions in the loaded statement.")
+    registry.register("categorize", categorize_transactions, "Alias for categorize_transactions.")
     registry.register("generate_dashboard", generate_dashboard, "Generate an HTML dashboard from loaded data.")
+    registry.register("dashboard", generate_dashboard, "Alias for generate_dashboard.")
     registry.register("save_memory", save_memory, "Save analysis results to persistent memory.")
+    registry.register("save", save_memory, "Alias for save_memory.")
+    registry.register("memory", save_memory, "Alias for save_memory.")
     return registry

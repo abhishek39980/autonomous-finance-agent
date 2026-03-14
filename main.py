@@ -20,25 +20,32 @@ from agent.planner import Planner
 from agent.llm_client import LLMClient
 from memory.memory_manager import MemoryManager
 from tools import get_default_tools
+from tools.finance_tools import GLOBAL_STATE
 
 DEFAULT_SYSTEM_PROMPT = (
     "You are a private financial auditor. Your goal is to analyze bank statements locally. "
     "Use the finance tool: read_statement(file_path), then categorize_transactions(), then generate_dashboard(), and finally save_memory()."
 )
 
-def run_agent(goal: str, config_path: Path | None = None, file_path: Path | None = None) -> dict:
+def run_agent(goal: str, config_path: Path | None = None, file_path: Path | None = None, pdf_password: str | None = None) -> dict:
     config = load_config(config_path or ROOT / "config.yaml")
     logger = AgentLogger(config.logging.dir, config.logging.level)
 
     # 1. Check LLM Connection
     try:
         base_url = config.llm.base_url.rstrip('/')
-        check_url = f"{base_url}/models" if "1234" in base_url else f"{base_url}/api/tags"
-        if requests.get(check_url, timeout=2).status_code != 200:
-            raise ConnectionError("Server not responding")
+        is_ollama = "11434" in base_url
+        check_url = f"{base_url}/api/tags" if is_ollama else f"{base_url}/models"
+        resp = requests.get(check_url, timeout=5)
+        if resp.status_code not in (200, 404):   # 404 is ok for some LM Studio versions
+            raise ConnectionError(f"Server responded with {resp.status_code}")
+    except requests.exceptions.ConnectionError:
+        provider = "Ollama" if is_ollama else "LM Studio"
+        logger.log_error("main", f"LLM not reachable at {base_url}")
+        return {"success": False, "error": f"{provider} is not running. Please start it first.", "llm_not_running": True}
     except Exception as e:
-        logger.log_error("main", f"LLM Error: {e}")
-        return {"success": False, "error": "LLM Connection Failed. Is LM Studio/Ollama running?", "llm_not_running": True}
+        logger.log_error("main", f"LLM check error: {e}")
+        return {"success": False, "error": f"LLM Connection Failed: {e}", "llm_not_running": True}
 
     # 2. Initialize Components
     try:
@@ -59,6 +66,11 @@ def run_agent(goal: str, config_path: Path | None = None, file_path: Path | None
         if file_path:
             memory_manager.short_term.set_file_path(str(file_path))
             print(f"Target File Set: {file_path}")
+
+        # Store PDF password in shared state so read_statement() can use it
+        if pdf_password:
+            GLOBAL_STATE["pdf_password"] = pdf_password
+            print("PDF password stored for decryption.")
 
         planner = Planner(config, llm, logger)
         executor = Executor(config, tools, llm, logger)
