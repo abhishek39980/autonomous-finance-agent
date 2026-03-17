@@ -167,7 +167,7 @@ autonomous-agent/
 ### 2. Clone & Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/autonomous-finance-agent.git
+git clone https://github.com/abhishek39980/autonomous-finance-agent.git
 cd autonomous-finance-agent
 
 python -m venv .venv
