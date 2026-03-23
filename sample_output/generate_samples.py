@@ -373,7 +373,7 @@ def generate_dashboard_html(csv_path: Path) -> Path:
     </div>
   </div>
 
-  <footer>Autonomous Finance Agent &nbsp;·&nbsp; Static Demo Output</footer>
+  <footer>VaultMind &nbsp;·&nbsp; Static Demo Output</footer>
 </div>
 
 <script>

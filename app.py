@@ -83,9 +83,10 @@ def get_index():
         return load_index_from_storage(storage_context)
     return None
 
-st.set_page_config(page_title="Document Q&A System", page_icon="🗂️", layout="wide")
+st.set_page_config(page_title="V", page_icon="static/logo.png" if os.path.exists("static/logo.png") else "V", layout="wide")
 
-st.title("🗂️ Document Q&A Knowledge Base")
+if os.path.exists("static/logo.png"):
+    st.image("static/logo.png", width=400)
 st.markdown("Upload your PDFs and chat with them using local LLMs configured in `config.yaml`.")
 
 # Sidebar for uploading documents

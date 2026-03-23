@@ -22,8 +22,8 @@ if str(ROOT) not in sys.path:
 
 # ── Page Config ─────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Finance Analyzer",
-    page_icon="💰",
+    page_title="V",
+    page_icon="static/logo.png" if os.path.exists("static/logo.png") else "V",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -243,7 +243,7 @@ def ask_llm(question: str, context_summary: str) -> str:
         llm = LLMClient(cfg.llm)
         
         # 1. Semantic Search
-        st.write("🔍 Searching transaction history...")
+        st.write("Searching transaction history...")
         search_results = semantic_search.search_transactions(question, k=10)
         
         relevant_context = context_summary + "\n\nRelevant Transactions Found:\n"
@@ -266,7 +266,7 @@ def ask_llm(question: str, context_summary: str) -> str:
         
         return llm.complete(prompt, system=system, max_tokens=1024)
     except Exception as e:
-        return f"⚠️ LLM Error: {e}"
+        return f"LLM Error: {e}"
 
 
 # ── Helper: Read Latest HTML Dashboard ───────────────────────────────────────
@@ -286,7 +286,6 @@ def get_latest_dashboard() -> str | None:
 #  SIDEBAR
 # ────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("### 💰 Finance Analyzer")
     st.markdown("---")
 
     # ── LLM Status ───────────────────────────────────────────────────────────
@@ -306,13 +305,13 @@ with st.sidebar:
         st.warning(
             "Start LM Studio and enable the server on port 1234, "
             "or run `ollama serve`.",
-            icon="⚠️",
+            icon=None,
         )
 
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ── File Upload ──────────────────────────────────────────────────────────
-    st.markdown("**📂 Upload Statement**")
+    st.markdown("**Upload Statement**")
     uploaded_file = st.file_uploader(
         "Drag & drop or click to browse",
         type=["csv", "xlsx", "xls", "pdf"],
@@ -322,7 +321,7 @@ with st.sidebar:
     # ── PDF Password (shown only when a PDF is uploaded) ─────────────────────
     pdf_password: str | None = None
     if uploaded_file and uploaded_file.name.lower().endswith(".pdf"):
-        st.markdown("**🔐 PDF Password** *(if encrypted)*")
+        st.markdown("**PDF Password** *(if encrypted)*")
         pdf_password = st.text_input(
             "PDF Password",
             type="password",
@@ -337,7 +336,7 @@ with st.sidebar:
 
     st.markdown("<br>", unsafe_allow_html=True)
     analyze_btn = st.button(
-        "🔍 Analyze Statement",
+        "Analyze Statement",
         use_container_width=True,
         disabled=not uploaded_file,
     )
@@ -349,7 +348,7 @@ with st.sidebar:
     st.markdown("---")
 
     # ── Quick-load sample ────────────────────────────────────────────────────
-    if st.button("📋 Load Sample Statement", use_container_width=True):
+    if st.button("Load Sample Statement", use_container_width=True):
         sample = ROOT / "data" / "dummy_statement.csv"
         if sample.exists():
             st.session_state["sample_path"] = str(sample)
@@ -364,7 +363,7 @@ with st.sidebar:
 # ────────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="main-header">
-    <h1>💰 Bank Statement Analyzer</h1>
+    """ + (f'<img src="data:image/png;base64,{__import__("base64").b64encode(open(ROOT / "static" / "logo.png", "rb").read()).decode()}" style="width:600px; max-width: 90%; margin-bottom: 2rem;">' if os.path.exists(ROOT / "static" / "logo.png") else "") + """
     <p>Upload your bank statement · Get AI-powered insights · 100% local &amp; private</p>
 </div>
 """, unsafe_allow_html=True)
@@ -378,7 +377,7 @@ for key in ["analysis_done", "dashboard_html", "context_summary", "messages", "t
 # ── Analysis Trigger ──────────────────────────────────────────────────────────
 if analyze_btn:
     if not online:
-        st.error("❌ LLM is offline. Please start LM Studio or Ollama first.")
+        st.error("LLM is offline. Please start LM Studio or Ollama first.")
     elif uploaded_file:
         # Save uploaded file to a temp path
         suffix = Path(uploaded_file.name).suffix
@@ -390,10 +389,10 @@ if analyze_btn:
         st.session_state["temp_path"] = tmp_path
 
         steps = [
-            ("📄", "Reading statement…"),
-            ("🏷️", "Categorizing transactions…"),
-            ("📊", "Generating dashboard…"),
-            ("💾", "Saving to memory…"),
+            ("", "Reading statement…"),
+            ("", "Categorizing transactions…"),
+            ("", "Generating dashboard…"),
+            ("", "Saving to memory…"),
         ]
 
         with st.status("🤖 Agent is analyzing your statement…", expanded=True) as status_bar:
@@ -403,11 +402,11 @@ if analyze_btn:
             def render_steps(active_idx: int) -> None:
                 for i, (icon, label) in enumerate(steps):
                     if i < active_idx:
-                        placeholders[i].markdown(f"✅ ~~{label}~~")
+                        placeholders[i].markdown(f"**{label}** Completed")
                     elif i == active_idx:
-                        placeholders[i].markdown(f"⏳ **{label}**")
+                        placeholders[i].markdown(f"**{label}**")
                     else:
-                        placeholders[i].markdown(f"⬜ {label}")
+                        placeholders[i].markdown(f"{label}")
 
             render_steps(0)
             time.sleep(0.3)
@@ -449,9 +448,9 @@ if analyze_btn:
                             f"Net balance: ₹{inc - exp:,.2f}\n"
                             f"Categories: {cats}"
                         )
-                    status_bar.update(label="✅ Analysis complete!", state="complete")
+                    status_bar.update(label="Analysis complete!", state="complete")
                 else:
-                    status_bar.update(label=f"❌ {result.get('error', 'Analysis failed')}", state="error")
+                    status_bar.update(label=f"{result.get('error', 'Analysis failed')}", state="error")
                     st.error(result.get("error") or result.get("output") or "Unknown error")
 
             except Exception as ex:
@@ -460,7 +459,7 @@ if analyze_btn:
 
     elif st.session_state.get("sample_path"):
         sample_path = st.session_state["sample_path"]
-        with st.status("🤖 Analyzing sample statement…", expanded=True) as status_bar:
+        with st.status("Analyzing sample statement…", expanded=True) as status_bar:
             try:
                 result = run_analysis(sample_path)
                 if result.get("success"):
@@ -478,7 +477,7 @@ if analyze_btn:
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab_dash, tab_insights, tab_recur, tab_fore, tab_chat = st.tabs([
-    "📊 Dashboard", "💡 Insights", "🔁 Recurring", "📈 Forecast", "💬 Chat with AI"
+    "Dashboard", "Insights", "Recurring", "Forecast", "Chat with AI"
 ])
 
 # ─── Dashboard Tab ────────────────────────────────────────────────────────────
@@ -491,7 +490,7 @@ with tab_dash:
             from tools.finance_tools import GLOBAL_STATE
             df = GLOBAL_STATE.get("df")
             if df is not None:
-                st.success("✅ Statement analyzed successfully!")
+                st.success("Statement analyzed successfully!")
                 col1, col2, col3, col4 = st.columns(4)
                 inc = df[df["Amount"] > 0]["Amount"].sum() if "Amount" in df.columns else 0
                 exp = abs(df[df["Amount"] < 0]["Amount"].sum()) if "Amount" in df.columns else 0
@@ -510,7 +509,7 @@ with tab_dash:
     else:
         st.markdown("""
         <div style="text-align:center; padding: 4rem 2rem; color: #6b7280;">
-            <div style="font-size: 5rem; margin-bottom: 1.5rem;">📊</div>
+            <div style="font-size: 5rem; margin-bottom: 1.5rem;">Dashboard</div>
             <h2 style="color: #9ca3af; font-size:1.4rem; margin-bottom:1rem;">
                 No statement analyzed yet
             </h2>
@@ -531,7 +530,7 @@ with tab_dash:
 # ─── Insights Tab ─────────────────────────────────────────────────────────────
 with tab_insights:
     if st.session_state.get("analysis_done"):
-        st.markdown("### 💡 AI Spending Insights")
+        st.markdown("### AI Spending Insights")
         try:
              from database.queries import queries
              insights = queries.get_recent_insights()
@@ -548,7 +547,7 @@ with tab_insights:
 # ─── Recurring Tab ────────────────────────────────────────────────────────────
 with tab_recur:
     if st.session_state.get("analysis_done"):
-        st.markdown("### 🔁 Detected Subscriptions & Recurring Payments")
+        st.markdown("### Detected Subscriptions & Recurring Payments")
         try:
              from database.queries import queries
              recurring = queries.get_recurring_payments()
@@ -572,7 +571,7 @@ with tab_recur:
 # ─── Forecast Tab ─────────────────────────────────────────────────────────────
 with tab_fore:
     if st.session_state.get("analysis_done"):
-        st.markdown("### 📈 Spending Forecast")
+        st.markdown("### Spending Forecast")
         try:
              from analysis.forecasting import forecasting_engine
              forecast = forecasting_engine.forecast_next_month()
@@ -603,7 +602,7 @@ with tab_chat:
     if not st.session_state.get("analysis_done"):
         st.markdown("""
         <div style="text-align:center; padding:4rem 2rem; color:#6b7280;">
-            <div style="font-size:4rem; margin-bottom:1rem;">💬</div>
+            <div style="font-size:4rem; margin-bottom:1rem;">Chat</div>
             <h2 style="color:#9ca3af; font-size:1.3rem;">Analyze a statement first</h2>
             <p>Once your statement is analyzed, you can ask questions here.</p>
         </div>
@@ -613,7 +612,7 @@ with tab_chat:
         <div style="background: rgba(102,126,234,0.1); border:1px solid rgba(102,126,234,0.3);
              border-radius:12px; padding:12px 16px; margin-bottom:16px;
              font-size:0.9rem; color:#a78bfa;">
-            💡 <strong>Ask anything about your finances</strong> — e.g.
+            Ask anything about your finances — e.g.
             "What's my biggest spending category?", "How much did I spend on food?",
             "Give me 3 money-saving tips based on my spending."
         </div>
@@ -638,6 +637,6 @@ with tab_chat:
             st.markdown(f'<div class="chat-bot">{answer}</div>', unsafe_allow_html=True)
 
         if st.session_state["messages"]:
-            if st.button("🗑️ Clear chat", key="clear_chat"):
+            if st.button("Clear chat", key="clear_chat"):
                 st.session_state["messages"] = []
                 st.rerun()

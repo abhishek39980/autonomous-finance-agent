@@ -3,7 +3,7 @@
 <div align="center">
 
 
-# 💰 Autonomous Finance Agent
+# VaultMind
 
 ### An intelligent, **100% offline** bank statement analyzer powered by local LLMs.
 
@@ -15,28 +15,28 @@
 > **Your financial data never leaves your machine.** No cloud APIs. No subscription fees. No data leaks.
 
 ![Demo GIF](docs/demo.gif)
-<!-- 📹 Replace the path above once you record a screen capture of the app running -->
+<!-- Replace the path above once you record a screen capture of the app running -->
 
 </div>
 
 ---
 
-## ✨ Why I Built This
+## Why I Built This
 
 Most financial dashboards require you to **upload sensitive bank statements to a third-party server**. That's a non-starter for privacy-conscious users.
 
 This project proves you can have **AI-powered financial intelligence without sacrificing data privacy**:
 
-- 🔒 **100% Offline** — Every LLM inference runs locally via [LM Studio](https://lmstudio.ai) or [Ollama](https://ollama.ai). Zero cloud calls.
-- 🗄️ **Local SQLite Database** — Transactions are durably stored locally for instant aggregations and lightning-fast historical queries.
-- 🧠 **FAISS Semantic Search** — Ask complex questions ("Where did I eat last month?") using locally-embedded transaction data powered by `SentenceTransformers`.
-- 🔮 **Predictive Analytics** — Uses Scikit-Learn to detect recurring subscriptions and forecast next month's spending.
-- 📄 **PDF Decryption** — Handles password-protected bank statement PDFs (common in India) natively.
-- 🧹 **Indian UPI Cleaning** — Custom regex logic strips alphanumeric noise from UPI strings into readable labels.
+- 🔒 100% Offline — Every LLM inference runs locally via [LM Studio](https://lmstudio.ai) or [Ollama](https://ollama.ai). Zero cloud calls.
+- Local SQLite Database — Transactions are durably stored locally for instant aggregations and lightning-fast historical queries.
+- FAISS Semantic Search — Ask complex questions ("Where did I eat last month?") using locally-embedded transaction data powered by `SentenceTransformers`.
+- Predictive Analytics — Uses Scikit-Learn to detect recurring subscriptions and forecast next month's spending.
+- PDF Decryption — Handles password-protected bank statement PDFs (common in India) natively.
+- Indian UPI Cleaning — Custom regex logic strips alphanumeric noise from UPI strings into readable labels.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -82,7 +82,7 @@ This project proves you can have **AI-powered financial intelligence without sac
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |---|---|---|
@@ -97,7 +97,7 @@ This project proves you can have **AI-powered financial intelligence without sac
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 autonomous-agent/
@@ -153,7 +153,7 @@ autonomous-agent/
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ### 1. Prerequisites
 
@@ -206,13 +206,13 @@ Open `sample_output/dashboard.html` directly in your browser to see the pre-gene
 
 ---
 
-## 🔐 PDF Password Support
+## PDF Password Support
 
 If your bank issues **encrypted / password-protected PDF statements** (common with Indian banks like HDFC, SBI, ICICI), simply enter the password in the **sidebar** before uploading. The app decrypts the PDF locally — your password is never stored or transmitted.
 
 ---
 
-## 🧠 Key Features
+## Key Features
 
 - **Semantic Search (RAG)** — Uses FAISS and `sentence-transformers` for powerful, context-aware querying against transaction history ("Did I pay Netflix?").
 - **Financial Forecasting** — Linear regression models project estimated expenses for upcoming months.
@@ -224,7 +224,7 @@ If your bank issues **encrypted / password-protected PDF statements** (common wi
 
 ---
 
-## 📸 Sample Output
+## Sample Output
 
 | Dashboard | Chat Interface |
 |---|---|
@@ -232,7 +232,7 @@ If your bank issues **encrypted / password-protected PDF statements** (common wi
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests welcome! Please open an issue first for major changes.
 
@@ -240,6 +240,6 @@ Pull requests welcome! Please open an issue first for major changes.
 
 <div align="center">
 
-Built with ❤️ for privacy-first personal finance · **No cloud. No compromise.**
+Built with care for privacy-first personal finance · **No cloud. No compromise.**
 
 </div>

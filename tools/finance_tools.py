@@ -737,7 +737,7 @@ def generate_dashboard(dummy_arg=None):
     </div>
   </div>
 
-  <footer>Autonomous Finance Agent &nbsp;·&nbsp; All data processed locally</footer>
+  <footer>VaultMind &nbsp;·&nbsp; All data processed locally</footer>
 </div>
 
 <script>
